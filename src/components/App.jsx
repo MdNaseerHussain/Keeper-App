@@ -39,6 +39,14 @@ function App() {
     setNewNote({ title: "", content: "" });
   };
 
+  const handleEdit = (index) => {
+    setNewNote({
+      title: noteList[index].title,
+      content: noteList[index].content,
+    });
+    handleDelete(index);
+  };
+
   return (
     <div>
       <Heading />
@@ -51,6 +59,7 @@ function App() {
             title={note.title}
             content={note.content}
             deleteFunc={handleDelete}
+            editFunc={handleEdit}
           />
         ))}
       </div>
