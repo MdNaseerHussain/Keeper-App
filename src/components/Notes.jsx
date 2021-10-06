@@ -1,8 +1,9 @@
 import React from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 function Notes(props) {
-  const { title, content, deleteFunc, id } = props;
+  const { title, content, deleteFunc, editFunc, id } = props;
 
   return (
     <div className="noteBox">
@@ -12,6 +13,7 @@ function Notes(props) {
         className="buttonWrap-delete"
         onClick={() => deleteFunc(id)}
       />
+      <EditIcon className="buttonWrap-edit" onClick={() => editFunc(id)} />
     </div>
   );
 }
