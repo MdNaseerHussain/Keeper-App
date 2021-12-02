@@ -4,8 +4,13 @@ import Notes from "./Notes";
 import Foot from "./Foot";
 import list from "./noteList";
 import Input from "./Input";
+import "./App.css";
+import Dialog from "@mui/material/Dialog";
+import AddIcon from "@material-ui/icons/Add";
 
 function App() {
+  localStorage.clear();
+
   let foo = list;
 
   if (localStorage.getItem("arrList") === null) {
@@ -39,10 +44,27 @@ function App() {
     setNewNote({ title: "", content: "" });
   };
 
+  const handleEdit = (index) => {
+    setNewNote({
+      title: noteList[index].title,
+      content: noteList[index].content,
+    });
+    handleDelete(index);
+  };
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Heading />
-      <Input current={newNote} changeFunc={handleChange} addFunc={handleAdd} />
       <div className="flexContainer">
         {noteList.map((note, idx) => (
           <Notes
@@ -51,8 +73,19 @@ function App() {
             title={note.title}
             content={note.content}
             deleteFunc={handleDelete}
+            editFunc={handleEdit}
           />
         ))}
+      </div>
+      <div className="iconContainer">
+        <AddIcon onClick={handleClickOpen} className="addNote" />
+        <Dialog className="dialog" open={open} onClose={handleClose}>
+          <Input
+            current={newNote}
+            changeFunc={handleChange}
+            addFunc={handleAdd}
+          />
+        </Dialog>
       </div>
       <Foot />
     </div>

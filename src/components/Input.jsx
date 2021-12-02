@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
+import "./Input.css";
 
 export default function Input(props) {
   const { current, changeFunc, addFunc } = props;
@@ -19,9 +20,8 @@ export default function Input(props) {
       />
       <textarea
         name="content"
-        maxLength="200"
         placeholder="Content"
-        rows="5"
+        rows="10"
         className="content-input"
         value={current.content}
         onChange={(event) => changeFunc(event.target.name, event.target.value)}
