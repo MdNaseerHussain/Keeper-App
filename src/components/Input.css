@@ -43,19 +43,3 @@ textarea {
   background: grey;
   transition: 250ms;
 }
-
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-::-webkit-scrollbar-track {
-  background: #ffffff;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(182, 182, 182);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(145, 145, 145);
-}

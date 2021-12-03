@@ -9,8 +9,6 @@ import Dialog from "@mui/material/Dialog";
 import AddIcon from "@material-ui/icons/Add";
 
 function App() {
-  localStorage.clear();
-
   let foo = list;
 
   if (localStorage.getItem("arrList") === null) {

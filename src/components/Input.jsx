@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import AddIcon from "@material-ui/icons/Add";
 import "./Input.css";
 
 export default function Input(props) {
   const { current, changeFunc, addFunc } = props;
-  const [show, setShow] = useState(false);
   return (
     <div className="input-container">
       <input
@@ -15,8 +14,6 @@ export default function Input(props) {
         autoComplete="off"
         value={current.title}
         onChange={(event) => changeFunc(event.target.name, event.target.value)}
-        style={{ borderRadius: show ? "10px 10px 0 0" : "10px 10px 10px 10px" }}
-        onClick={() => setShow(true)}
       />
       <textarea
         name="content"
@@ -25,13 +22,8 @@ export default function Input(props) {
         className="content-input"
         value={current.content}
         onChange={(event) => changeFunc(event.target.name, event.target.value)}
-        style={{ display: show ? "block" : "none" }}
       />
-      <AddIcon
-        className="buttonWrap-add"
-        onClick={addFunc}
-        style={{ display: show ? "block" : "none" }}
-      />
+      <AddIcon className="buttonWrap-add" onClick={addFunc} />
     </div>
   );
 }
